@@ -4,25 +4,15 @@
 This application provides users with cryptocurrency price-related information, powered by FastAPI and Streamlit, while also supporting multilingual input via translation. It utilizes a classification system to identify if a query is related to cryptocurrency prices, rate limiting to avoid excessive requests, and caching for efficient price lookups. Additionally, Redis manages conversation history and rate limits.
 
 ## Table of Contents
-1. [Features](#features)
-2. [Architecture](#architecture)
-3. [Requirements](#requirements)
-4. [Environment Variables](#environment-variables)
-5. [Setup and Installation](#setup-and-installation)
-6. [Running the Application](#running-the-application)
-7. [Components Overview](#components-overview)
-8. [Usage](#usage)
 
----
+1. [Architecture](#architecture)
+2. [Requirements](#requirements)
+3. [Environment Variables](#environment-variables)
+4. [Setup and Installation](#setup-and-installation)
+5. [Running the Application](#running-the-application)
+6. [Components Overview](#components-overview)
 
-## Features
-- **Cryptocurrency Price Fetching**: Fetches real-time cryptocurrency prices from CoinGecko API.
-- **Multilingual Support**: Utilizes translation to allow input queries in multiple languages.
-- **Classification**: Determines if a query is specifically about cryptocurrency prices.
-- **Context-Based Answering**: Leverages conversation history for context in responses.
-- **Caching**: Stores cryptocurrency prices in memory to avoid repeated API calls.
-- **Rate Limiting**: Controls request frequency using Redis to ensure fair usage.
-- **User Interface**: Streamlit UI for a user-friendly query input and response.
+
 
 ---
 
@@ -47,6 +37,15 @@ Create a `.env` file in the root of the project to store sensitive data:
 
 ```plaintext
 TOGETHER_API_KEY=your_togetherai_api_key
+GOOGLE_PROJECT_ID=your_google_project_id
+GOOGLE_PRIVATE_KEY_ID=your_google_private_key_id
+GOOGLE_PRIVATE_KEY="your_google_private_key"
+GOOGLE_CLIENT_EMAIL=your_google_client_email
+GOOGLE_CLIENT_ID=your_google_client_id
+GOOGLE_AUTH_URI=your_google_auth_uri
+GOOGLE_TOKEN_URI=your_google_token_uri
+GOOGLE_CERT_URL=your_google_cert_url
+GOOGLE_CLIENT_CERT_URL=your_google_client_cert_url
 ```
 
 ## Setup and Installation
@@ -112,57 +111,5 @@ streamlit run ui.py
 - **classify_query.py**: Identifies if a query is price-related using the TogetherAI API.
 - **ui.py**: Provides a Streamlit user interface for interacting with the app.
 
----
-
-## Usage
-
-### 1. Input in Streamlit
-- Enter a **Session ID** to track conversations.
-- Type a query, such as *"What is the price of Bitcoin?"*.
-- Select a source language for the query (default is English).
-- Press **Submit** to see the result.
-
-### 2. API Endpoint (for FastAPI)
-The FastAPI server has an endpoint for handling cryptocurrency queries:
-
-**POST /query**
-
-**Payload**:
-```json
-{
-    "session_id": "your_unique_session_id",
-    "query": "Your cryptocurrency-related question",
-    "source_language": "Your language (e.g., English, Spanish)"
-}
-```
-
-**Response**:
-- For cryptocurrency-related queries, it returns the price.
-- For non-cryptocurrency queries, it provides a general response.
-
-### Example Command for Rate Limiting
-To test rate limiting, send multiple queries quickly:
-
-```bash
-for i in {1..9}; do curl -X POST http://127.0.0.1:8001/query -H "Content-Type: application/json" -d '{"session_id": "test_session", "query": "What is the price of Bitcoin?", "source_language": "English"}'; done
-```
-
-After six requests per minute, you should receive a **429 Rate Limit Exceeded** response.
-
----
-
-## Assumptions and Limitations
-
-1. **Assumptions**:
-   - Users provide a valid cryptocurrency name.
-   - API rate limiting is per unique IP.
-2. **Limitations**:
-   - Classification model might misinterpret ambiguous queries.
-   - IP-based rate limiting could restrict users sharing the same IP.
-   - Maximum history length may impact very long conversations.
-
-## License
-
-This project is open-source under the MIT license.
 
 --- 
