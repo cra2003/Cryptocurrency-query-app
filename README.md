@@ -46,3 +46,13 @@ Create a `.env` file in the root of the project to store sensitive data:
 
 ```plaintext
 TOGETHER_API_KEY=your_togetherai_api_key
+
+Setup and Installation
+Clone the Repository
+
+bash
+Always show details
+
+Copy code
+git clone https://github.com/yourusername/crypto-query-app.git
+cd crypto-query-app
