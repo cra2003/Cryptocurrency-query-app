@@ -52,7 +52,7 @@ GOOGLE_CLIENT_CERT_URL=your_google_client_cert_url
 
 1. **Clone the Repository**
     ```bash
-    git clone https://github.com/yourusername/crypto-query-app.git
+    git clone https://github.com/cra2003/Sarvam-assignment.git
     cd crypto-query-app
     ```
 
@@ -105,8 +105,8 @@ streamlit run ui.py
 ## Components Overview
 
 - **main.py**: Defines the FastAPI application, rate limiting, and routing logic.
-- **final_reply.py**: Processes user queries, classifies cryptocurrency-related questions, and manages conversation context with Redis.
-- **translate.py**: Uses TogetherAI for translating queries.
+- **final_reply.py**: Processes user queries and manages conversation context with Redis.
+- **translate.py**: Uses Google translate for translating queries.
 - **crypto_price.py**: Fetches cryptocurrency prices from the CoinGecko API and uses caching to store results temporarily.
 - **classify_query.py**: Identifies if a query is price-related using the TogetherAI API.
 - **ui.py**: Provides a Streamlit user interface for interacting with the app.
