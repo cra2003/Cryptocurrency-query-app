@@ -1,7 +1,6 @@
 # Sarvam-assignment
 # Let's create the content for the README.md file based on the provided details.
 
-readme_content = """
 # Cryptocurrency Query App
 
 This application provides users with cryptocurrency price-related information, powered by FastAPI and Streamlit, while also supporting multilingual input via translation. It utilizes a classification system to identify if a query is related to cryptocurrency prices, rate limiting to avoid excessive requests, and caching for efficient price lookups. Additionally, Redis manages conversation history and rate limits.
