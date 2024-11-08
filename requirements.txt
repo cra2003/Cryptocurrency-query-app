@@ -1,0 +1,10 @@
+fastapi==0.112.4
+uvicorn==0.25.0
+requests==2.31.0
+redis==4.3.5
+cachetools==5.2.0
+python-dotenv==1.0.0
+together
+streamlit==1.18.1
+pydantic==2.9.2
+google-cloud-translate==3.0.2
