@@ -20,7 +20,7 @@ This application provides users with cryptocurrency price-related information, p
 The application is divided into several components:
 - **FastAPI** (`main.py`): Handles API requests and routes them to appropriate processing functions.
 - **Streamlit UI** (`ui.py`): Provides a frontend interface for users to interact with the app.
-- **Redis**: Manages rate limits and conversation history.
+- **Redis**: Manages rate limits,caching and conversation history.
 - **TogetherAI API**: Used for classification and translation.
 
 ---
